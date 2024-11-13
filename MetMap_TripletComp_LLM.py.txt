@@ -18,7 +18,6 @@ pipeline = transformers.pipeline(
     )
 
 with open(LLMFile,'r') as file:
-    
     for line in file:
         base = json.loads(line)['sentence1']
         sequences = pipeline(
