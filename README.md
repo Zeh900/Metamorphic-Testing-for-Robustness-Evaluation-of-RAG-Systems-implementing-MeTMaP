@@ -1,4 +1,4 @@
-# Metamorphic-Testing-for-Robustness-Evaluation-of-RAG-Systems-implementing-MeTMaP
+# Metamorphic Testing for Robustness Evaluation of Retrieval-Augmented Generation Systems implementing MeTMaP
 
 
 
