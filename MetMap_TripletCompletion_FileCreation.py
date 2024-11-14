@@ -27,17 +27,19 @@ QuantFile = 'QuantSub.jsonl'
 LLMFile = 'LLM.jsonl'
 
 
-
+##If the tag in an entry is simply 'Other', it means that the two sentences have the same meaning, so a negative sentence is created using random number generation.
+##Otherwise, if the MR was actually identified, a placeholder sentence is assigned, to be actually added later by a LLM.
 for entry in tagged_sentences:
-  if entry["tag"] == "QuantSub":
+  if entry["tag"] == "Other":
     quant = RegexFindQuant(entry["sentence1"])
-    rand_mult = 1
-    while rand_mult == 1:
-      rand_mult = random.uniform(0,2)
-    new_quant = int(quant) * rand_mult
-    add_final_entry(entry["sentence1"], entry["sentence2"],re.sub(quant,str(int(new_quant)),entry["sentence1"]),quantSub_sentences)
+    if quant != 'null':
+      rand_mult = 1
+      while rand_mult == 1:
+        rand_mult = random.uniform(0,2)
+      new_quant = int(quant) * rand_mult
+      add_final_entry(entry["sentence1"],re.sub(quant,str(int(new_quant)),entry["sentence1"]),entry["sentence2"],quantSub_sentences)
   elif "Other" not in entry["tag"]:
-    add_final_entry(entry["sentence1"], entry["sentence2"],'',LLM_sentences)
+    add_final_entry(entry["sentence1"], entry["sentence2"],' ',LLM_sentences)
 
 
 with open(QuantFile, 'w') as file:
