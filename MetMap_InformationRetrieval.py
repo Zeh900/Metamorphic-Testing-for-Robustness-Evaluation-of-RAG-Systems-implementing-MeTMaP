@@ -36,8 +36,8 @@ def informationRetrieval(sentences):
     print('\n')
 
 
-print('Information retrieval for sentences with the tag QuantSub')
+print('Information retrieval for sentences with that had a negative sentence generated (QuantSub)')
 informationRetrieval(quant_sentences)
 
-print('Information retrieval for sentences with the tags different from Other and QuantSub')
+print('Information retrieval for sentences that had a positive sentence generated')
 informationRetrieval(LLM_sentences)
