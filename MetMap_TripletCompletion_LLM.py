@@ -29,5 +29,6 @@ with open(LLMFile,'r') as file:
             eos_token_id=tokenizer.eos_token_id,
         )
         for seq in sequences:
+            ##provvisorio
             print(f"Result: {seq['generated_text']}")
             print('\n')
