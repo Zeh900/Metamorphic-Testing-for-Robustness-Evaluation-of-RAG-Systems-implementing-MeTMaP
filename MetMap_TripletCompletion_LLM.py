@@ -19,6 +19,7 @@ pipeline = transformers.pipeline(
     device_map="auto",
     )
 
+##Generating the third sentence and adding it to its sentence pair
 with open(LLMFile,'r') as file:
     for line in file:
         base = json.loads(line)['sentence1']
@@ -30,7 +31,6 @@ with open(LLMFile,'r') as file:
             num_return_sequences=1,
             eos_token_id=tokenizer.eos_token_id,
         )
-        
         
         for seq in sequences:
             response = str(seq['generated_text']).split('\n')[1]
