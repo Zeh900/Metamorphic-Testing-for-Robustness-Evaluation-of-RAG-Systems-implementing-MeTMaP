@@ -4,8 +4,11 @@ import torch
 import json
 
 LLMFile = 'LLM.jsonl'
-
+new_contents = []
 model = "tiiuae/falcon-7b-instruct"
+
+def add_final_entry(sentence1, sentence2, sentence3,sentences):
+  sentences.append({"sentence1": sentence1, "sentence2": sentence2, "sentence3": sentence3})
 
 tokenizer = AutoTokenizer.from_pretrained(model)
 pipeline = transformers.pipeline(
@@ -13,7 +16,6 @@ pipeline = transformers.pipeline(
     model=model,
     tokenizer=tokenizer,
     torch_dtype=torch.bfloat16,
-    trust_remote_code=True,
     device_map="auto",
     )
 
@@ -28,7 +30,18 @@ with open(LLMFile,'r') as file:
             num_return_sequences=1,
             eos_token_id=tokenizer.eos_token_id,
         )
+        
+        
         for seq in sequences:
-            ##provvisorio
+            response = str(seq['generated_text']).split('\n')[1]
             print(f"Result: {seq['generated_text']}")
             print('\n')
+            add_final_entry(base,json.loads(line)['sentence2'],response,new_contents)
+
+
+with open(LLMFile, 'w') as file:
+  for d in new_contents:
+    json.dump(d,file,ensure_ascii=False)
+    file.write('\n')
+
+            
