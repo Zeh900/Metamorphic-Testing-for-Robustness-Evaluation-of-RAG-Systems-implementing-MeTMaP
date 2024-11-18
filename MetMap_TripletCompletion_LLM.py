@@ -24,7 +24,7 @@ with open(LLMFile,'r') as file:
     for line in file:
         base = json.loads(line)['sentence1']
         sequences = pipeline(
-            "Paraphrase the following sentence while not changing its meaning at all: " +  base,
+            "Paraphrase the following sentence while not changing its meaning under any circumstance and add as little new information as possible: " +  base,
             max_length=200,
             do_sample=True,
             top_k=10,
