@@ -41,7 +41,7 @@ with open(LLMFile,'r') as file:
 
 with open(LLMFile, 'w') as file:
   for d in new_contents:
-    json.dump(d,file,ensure_ascii=False)
+    json.dump(d,file)
     file.write('\n')
 
             
