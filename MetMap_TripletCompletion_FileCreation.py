@@ -17,7 +17,7 @@ def add_final_entry(sentence1, sentence2, sentence3,sentences):
 
 
 
-file_name = '/content/dev_modificato.tsv'
+file_name = 'PAWSWiki_Modified.tsv'
 dataset_full = pd.read_csv(file_name, sep = '\t', engine='python', names = ['id', 'sentence1', 'sentence2', 'label'])
 
 for index in range(1,100):
