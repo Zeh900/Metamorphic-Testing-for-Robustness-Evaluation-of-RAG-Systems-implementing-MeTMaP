@@ -29,7 +29,7 @@ def RegexFindQuant(sentence):
 
 ##Determines the word level metamorphosis that was applied to the sentence pair, if it doesn't match any of the ones described in the paper, it's indicated as 'Other'.
 def MRIdentification(sentence1, sentence2,label):
-  #In the PAWS dataset, 0 indicates that two sentences have the same meaning. We are only interested in sentences that have different meaning.
+  #In the PAWS dataset, 1 indicates that two sentences have the same meaning. We are only interested in sentences that have different meaning, indicated with 0.
   if label == '0':
     words_sentence1 = sentence1.lower().split()
     words_sentence2 = sentence2.lower().split()
