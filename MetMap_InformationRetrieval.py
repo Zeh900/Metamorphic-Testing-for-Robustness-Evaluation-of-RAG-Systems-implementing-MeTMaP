@@ -25,9 +25,9 @@ def informationRetrieval(sentences):
     sentence_vector_pos = model.encode(sentence["sentence3"])
 
     distance_base_pos = distance.euclidean(sentence_vector_base,sentence_vector_pos)
-    print(distance_base_pos)
+    print('The distance between the base and positive vectors is: ' + str(distance_base_pos))
     distance_base_neg = distance.euclidean(sentence_vector_base,sentence_vector_neg)
-    print(distance_base_neg)
+    print('The distance between the base and negative vectors is: ' + str(distance_base_neg))
 
     if distance_base_pos < distance_base_neg:
       print('positive distance is lower:' + ' ' + str(distance_base_pos) + ' ' + 'the matching was correct')
