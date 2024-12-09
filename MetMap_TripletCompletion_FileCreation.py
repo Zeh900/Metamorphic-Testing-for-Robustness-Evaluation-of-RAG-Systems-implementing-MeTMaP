@@ -33,8 +33,8 @@ for entry in tagged_sentences:
   if entry["tag"] == "Other":
     quant = RegexFindQuant(entry["sentence1"])
     if quant != 'null':
-      rand_mult = 1
-      while rand_mult == 1:
+      rand_mult = 1.0
+      while rand_mult == 1.0:
         rand_mult = random.uniform(0,2)
       new_quant = int(quant) * rand_mult
       add_final_entry(entry["sentence1"],re.sub(quant,str(int(new_quant)),entry["sentence1"]),entry["sentence2"],quantSub_sentences)
